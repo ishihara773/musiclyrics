@@ -22,8 +22,8 @@ end
 # terminating a worker in development environments.
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
-# Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-port ENV.fetch("PORT") { 3000 }
+# Specifies the `port` that Puma will listen on to receive requests; default is 3001
+port ENV.fetch("PORT") { 3001 }
 
 # Specifies the `environment` that Puma will run in.
 environment ENV.fetch("RAILS_ENV") { "development" }
@@ -32,4 +32,8 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Allow puma to be restarted by `bin/rails restart` command.
-plugin :tmp_restart
+# NOTE: Windows 環境だと `plugin :tmp_restart` が原因で
+# `No such file or directory - bin/rails (Errno::ENOENT)` が
+# 発生することがあるため、ここではコメントアウトしています。
+# 必要になったら再度有効にしてください。
+# plugin :tmp_restart
