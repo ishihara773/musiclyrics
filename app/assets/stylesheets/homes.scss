@@ -1,7 +1,8 @@
 .title {
-  font-family: cursive;
+  font-family:'Homemade Apple', cursive;
+  color: #ffffff;
 }
-
+  
 .sub-title {
   font-family: serif;
 }
@@ -10,8 +11,8 @@
   height: 100%;
   width: 100%;
   display: table;
-  background-image: url(/assets/top.jpg);
-  background-color:rgba(162, 162, 49, 0.4);
+  background-image: url(/assets/aoi.jpg);
+  background-color:rgba(255, 255, 255, 0);
   background-blend-mode:lighten;
   background-size: 100% 100%;
 }

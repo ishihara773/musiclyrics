@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Traveler</title>
+    <title>Musiulyics</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <header>
-      <div><%= link_to root_path, class: "text-white nav-link" do %>traveler<% end %></div>
-      <div><%= link_to "トップ", root_path, class: "text-white nav-link" %></div>
-      <div><%= link_to "投稿する", new_post_path, class: "text-white nav-link" %></div>
-      <div><%= link_to "投稿一覧", posts_path, class: "text-white nav-link" %></div>
+      <div><%= link_to root_path, class: "text-white nav-link" do %>Musiulyics<% end %></div>
+      <div><%= link_to "TOP", root_path, class: "text-white nav-link" %></div>
+      <div><%= link_to "NEW POST", new_post_path, class: "text-white nav-link" %></div>
+      <div><%= link_to "HOME", posts_path, class: "text-white nav-link" %></div>
     </header>
     <%= yield %>
   </body>
