@@ -1,24 +1,71 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション名
+musiclyrics
 
-Things you may want to cover:
+---
 
-* Ruby version
+## 概要
+音楽の感想や歌詞への想いを投稿し、画像付きで一覧・閲覧できるWebアプリケーション。
 
-* System dependencies
+---
 
-* Configuration
+## 作成背景・目的
+音楽を聴いたときの感情や印象は時間が経つと薄れてしまうため、  
+その瞬間の気持ちを記録として残せる場所が欲しいと考え、本アプリを作成する。
 
-* Database creation
+また、Webアプリケーション開発の基礎である  
+CRUD処理や画像アップロード機能を実装することを目的としている。
 
-* Database initialization
+---
 
-* How to run the test suite
+## ターゲットユーザー
+- 音楽が好きな人
+- 好きな楽曲の感想を残したい人
+- シンプルな操作で投稿・閲覧をしたい人
 
-* Services (job queues, cache servers, search engines, etc.)
+---
 
+## 利用シーン
+- 楽曲を聴いた直後に感想をメモしたいとき
+- 後から過去に聴いた音楽の記録を振り返りたいとき
+
+---
+
+## 機能要件
+### 実装する機能
+- ユーザー登録・ログイン機能
+- 投稿の作成・編集・削除機能
+- 画像アップロード機能
+- 投稿一覧表示機能
+- 投稿詳細表示機能
+
+### 実装しない機能（今回は対応しない）
+- コメント機能
+- いいね機能
+- フォロー機能
+
+---
+
+## 非機能要件
+- 直感的に操作できるシンプルなUI
+- 初学者でも理解しやすい構成
+- PCブラウザでの利用を想定
+
+---
+
+## 使用技術（予定）
+- Ruby
+- Ruby on Rails
+- HTML / CSS
+- SQLite（開発環境）
+
+---
+
+## 今後の展望
+- 検索機能の追加
+- タグ機能の追加
+- デザイン面の改善
 * Deployment instructions
 
 * ...
