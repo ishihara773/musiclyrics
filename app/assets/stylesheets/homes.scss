@@ -20,4 +20,24 @@
 .text-center {
   display: table-cell;
   vertical-align: middle;
+  font-family: serif;
+}
+
+.comments-index {
+  background-color: #fff;
+  border: 1px #fff solid;
+}
+
+.comment-delete {
+  margin-left: auto;
+}
+
+.comments {
+  margin-left: 50px;
+  font-family: serif;
+}
+
+.caption {
+  margin-bottom: 0;
+  font-family: serif;
 }

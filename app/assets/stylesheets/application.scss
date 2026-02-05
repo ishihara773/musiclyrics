@@ -30,7 +30,7 @@
  header {
   display: flex;
   background-color: rgb(0, 27, 73);
-  font-family: 'Homemade Apple', cursive;
+  font-family: serif;
 }
 
 header div:first-child {
@@ -58,4 +58,17 @@ a:hover {
 
 .nav-link {
   text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(59, 89, 169)!important;
+  text-decoration: underline;
+}
+
+.profile-img {
+  border-radius: 50%;
 }

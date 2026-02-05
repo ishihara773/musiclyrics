@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  #get 'users/index'
+  #get 'users/show'
+  devise_for :users
+  #resources :users, only:[:index, :show] 
   #get 'posts/new'
   #post 'posts' => 'posts#create'
-  resources :posts
+  #resources :posts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -14,5 +18,22 @@ Rails.application.routes.draw do
   #root "posts#index"
   #get 'top' => 'homes#top'
   #post 'posts' => 'posts#create'
+
+  resources :posts do
+    collection do
+      get 'confirm'
+    end
+
+    resources :comments, only:[:create, :destroy]
+    resource :favorites, only:[:create, :destroy]
+  end
+
+  resources :users, only:[:index, :show, :edit, :update] do
+    member do
+      get :follows, :followers
+    end
+  end
+
+  resource :relationships, only: [:create, :destroy]
 
 end

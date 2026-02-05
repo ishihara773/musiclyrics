@@ -1,0 +1,23 @@
+ <div class="row mt-5 w-50">
+    <% @users.each do |user| %>
+        <div class="one-post card mt-3">
+          <%= link_to user_path(user) do %>
+            <div class="d-flex">
+              <p class="caption h4"><%= user.name %></p>
+              <p class="caption"><%= "#{user.posts.count} POST" %></p>
+            </div>
+          <% end %>
+  
+          <p class="caption h4 mt-4 ml-2"><%= user.name %></p>
+        </div>
+
+        <%# ★ここが重要：公開(published)だけ数える %>
+        <p class="caption ml-3"><%= "#{user.posts.published.count} 投稿" %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+  <%= paginate users %>
+</div>

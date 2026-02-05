@@ -3,24 +3,6 @@
     <div class="row mt-5">
       <h1 class="font-weight-normal">all views</h1>
     </div>
-
-    <div class="row">
-      <% @posts.each do |post| %>
-        <div class="one-post col-sm-4 mb-3">
-          <%= link_to post_path(post) do %>
-
-            <% if post.image.attached? %>
-              <%= image_tag post.image %><br>
-            <% end %>
-
-            <p class="caption-row">
-             <%= link_to "name", "#", class: "caption-name" %>
-             <span class="caption-music"><%= post.location %></span>
-            </p>
-
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'index', posts: @posts %>
   </div>
 </div>

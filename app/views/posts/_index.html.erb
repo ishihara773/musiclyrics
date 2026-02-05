@@ -1,0 +1,37 @@
+<%# app/views/posts/_index.html.erb %>
+
+<div class="row w-100 justify-content-center">
+  <% posts.each do |post| %>
+    <div class="one-post card mt-3 p-3" style="width: 700px;">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <p class="caption h4 mb-1"><%= post.location %></p>
+
+          <%# status表示（下書きのときだけ） %>
+          <% if post.draft? %>
+            <span class="badge bg-secondary">下書き</span>
+          <% end %>
+        </div>
+
+        <%# 下書きは編集へ / 公開は詳細へ %>
+        <% if post.draft? %>
+          <%= link_to "編集", edit_post_path(post), class: "btn btn-outline-secondary btn-sm" %>
+        <% else %>
+          <%= link_to "詳細", post_path(post), class: "btn btn-outline-primary btn-sm" %>
+        <% end %>
+      </div>
+
+      <% if post.image.attached? %>
+        <div class="mt-3">
+          <%= image_tag post.image, class: "img-fluid rounded" %>
+        </div>
+      <% end %>
+
+      <p class="caption mt-3 mb-0"><%= simple_format(post.text) %></p>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+  <%= paginate posts %>
+</div>

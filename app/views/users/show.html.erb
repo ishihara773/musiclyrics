@@ -1,0 +1,75 @@
+<div class="cover-user-show">
+  <div class="container d-flex flex-column align-items-center">
+
+    <div class="row mt-5">
+      <% if user_signed_in? && @user == current_user %>
+        <h1>MY PAGE</h1>
+      <% else %>
+        <h1><%= @user.name %>'s PLAYLIST</h1>
+      <% end %>
+    </div>
+
+    <% if user_signed_in? %>
+      <% if @user == current_user %>
+        <p class="align-self-end">
+          <%= link_to "プロフィール編集",
+                      edit_user_registration_path,
+                      class: "btn btn-success" %>
+        </p>
+      <% else %>
+        <p class="align-self-end">
+          <% if current_user.following?(@user) %>
+             <%= button_to "フォロー外す",
+              relationships_path(user_id: @user.id),
+              method: :delete,
+              form: { data: { turbo: false } },
+              class: "btn btn-danger" %>
+          <% else %>
+          <%= button_to "フォローする",
+              relationships_path(user_id: @user.id),
+              method: :post,
+              form: { data: { turbo: false } },
+              class: "btn btn-success" %>
+          <% end %>
+        </p>
+      <% end %>
+    <% end %>
+
+    <div class="d-flex w-100 align-items-center mt-3">
+      <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image, size: "100x100", class: "profile-img" %>
+      <% else %>
+        <%= image_tag "no_image.svg", size: "100x100", class: "profile-img" %>
+      <% end %>
+
+      <h4 class="ml-3 card w-100 profile">
+        <%= @user.profile.presence || "プロフィールはまだありません" %>
+      </h4>
+    </div>
+
+    <div class="d-flex my-3">
+      <h6 class="mr-3">
+        <%= link_to "フォロー #{@following_users.count}", follows_user_path(@user), class: "caption" %>
+      </h6>
+      <h6>
+        <%= link_to "フォロワー #{@follower_users.count}", followers_user_path(@user), class: "caption" %>
+      </h6>
+    </div>
+
+    <div class="row w-100">
+      <% @posts.each do |post| %>
+        <div class="col-sm-3 mb-3">
+          <%= link_to post_path(post) do %>
+            <% if post.image.attached? %>
+              <%= image_tag post.image.variant(resize_to_limit: [200, 133]) %>
+            <% end %>
+            <p><%= post.location %></p>
+            <p><%= post.comments.count %> comments</p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= paginate @posts %>
+  </div>
+</div>
