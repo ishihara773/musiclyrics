@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "homes#top"
+  get "/start", to: "homes#start"
+  #get "/start", to: "homes#start"
+ # devise_for :users
 
   #root "posts#index"
   #get 'top' => 'homes#top'

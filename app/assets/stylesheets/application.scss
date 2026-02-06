@@ -72,3 +72,46 @@ a:hover {
 .profile-img {
   border-radius: 50%;
 }
+
+.auth-wrap{
+  min-height: 100vh;
+  display: flex;
+}
+
+.auth-left{
+  flex: 1.2;
+  background: url(/assets/top.png) center/cover no-repeat; /* 好きな画像に */
+  position: relative;
+}
+
+.auth-brand{
+  position: absolute;
+  left: 48px;
+  top: 48px;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+}
+
+.auth-logo{ font-size: 44px; margin: 0; font-weight: 700; }
+.auth-copy{ margin-top: 10px; font-size: 16px; opacity: .95; }
+
+.auth-right{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 48px 24px;
+}
+
+.auth-card{
+  width: 100%;
+  max-width: 460px;
+}
+
+.auth-title{ font-size: 28px; font-weight: 700; }
+.auth-sub{ color: #666; margin-top: 6px; }
+
+.auth-tabs .nav-link{
+  font-weight: 600;
+}
