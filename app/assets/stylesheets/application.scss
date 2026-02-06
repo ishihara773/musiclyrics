@@ -47,6 +47,12 @@ header div {
   line-height: 30px;
 }
 
+.header-logo {
+  height: 30px;   /* ←ここで大きさ調整（40〜60くらいが無難） */
+  width: auto;    /* 横は自動で比率維持 */
+  display: block;
+}
+
 a:hover {
   color: rgb(54, 71, 163)!important;
 }
@@ -62,11 +68,12 @@ a:hover {
 
 a {
   text-decoration: none;
+  color: rgb(0, 27, 73);
+  font-weight: 600;
 }
 
 a:hover {
-  color: rgb(59, 89, 169)!important;
-  text-decoration: underline;
+  color: rgb(0, 27, 73)!important;
 }
 
 .profile-img {
@@ -79,39 +86,87 @@ a:hover {
 }
 
 .auth-left{
-  flex: 1.2;
-  background: url(/assets/top.png) center/cover no-repeat; /* 好きな画像に */
+  flex: 1.1;
+  background: rgb(0, 27, 73);
   position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.auth-brand{
-  position: absolute;
-  left: 48px;
-  top: 48px;
+.auth-brand {
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+  text-align: left;
+  max-width: 360px;
 }
 
-.auth-logo{ font-size: 44px; margin: 0; font-weight: 700; }
-.auth-copy{ margin-top: 10px; font-size: 16px; opacity: .95; }
+//MUSIC LYRICS のロゴ//
+.auth-logo {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+//文字文章//
+.auth-copy {
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
 
 .auth-right{
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  font-family: serif;
   padding: 48px 24px;
 }
 
-.auth-card{
-  width: 100%;
-  max-width: 460px;
+//文字に丸み持たせる・枠の大きさ指定//
+.form-control {
+  border-radius: 20px;   /* ← ここが丸み */
 }
 
-.auth-title{ font-size: 28px; font-weight: 700; }
-.auth-sub{ color: #666; margin-top: 6px; }
 
-.auth-tabs .nav-link{
+
+//ログイン・新規十六ボタン//
+.btn-primary {
+  background: rgb(0, 27, 73);
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
   font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: rgb(0, 40, 110);
+}
+
+
+
+//真っ二つ//
+.cover {
+  background-image: url("/assets/IMG_4534.png");
+  background-size: cover;      /* 画面いっぱい */
+  background-position: center; /* 中央寄せ */
+  background-repeat: no-repeat;
+}
+
+
+//~~~はこちらボタン//
+.auth-link-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid rgb(0, 27, 73);
+  color: rgb(0, 27, 73);
+  font-weight: 600;
+}
+
+.auth-link-btn:hover {
+  background: rgba(0, 30, 82, 0.646);
+  color: #fff;
+  text-decoration: none;
 }

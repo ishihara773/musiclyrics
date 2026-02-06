@@ -2,79 +2,54 @@
   <div class="auth-left">
     <div class="auth-brand">
       <h1 class="auth-logo">Musiclyrics</h1>
-      <p class="auth-copy">あなたの刺さった歌詞を、記録して語り合おう。</p>
+      <p class="auth-copy">
+        あなたの好きな歌詞を、記録して語り合おう。
+      </p>
     </div>
   </div>
 
   <div class="auth-right">
     <div class="auth-card">
-      <h2 class="auth-title">Musiclyricsへようこそ</h2>
-      <p class="auth-sub">ログイン、または新規登録してください</p>
+      <h2 class="auth-title">ログイン</h2>
+      <p class="auth-sub">アカウントにログインしてください</p>
 
-      <!-- tabs -->
-      <ul class="nav nav-tabs auth-tabs" id="authTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginPane" type="button" role="tab">
-            ログイン
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signupPane" type="button" role="tab">
-            新規登録
-          </button>
-        </li>
-      </ul>
-
-      <div class="tab-content pt-4">
-        <!-- login -->
-        <div class="tab-pane fade show active" id="loginPane" role="tabpanel">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="mb-3">
-              <%= f.label :email, "メールアドレス", class: "form-label" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-            </div>
-
-            <div class="mb-3">
-              <%= f.label :password, "パスワード", class: "form-label" %>
-              <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-            </div>
-
-            <div class="d-grid mt-4">
-              <%= f.submit "ログイン", class: "btn btn-primary btn-lg" %>
-            </div>
+      <% if resource.errors.any? %>
+        <div class="alert alert-danger">
+          <% resource.errors.full_messages.each do |msg| %>
+            <div><%= msg %></div>
           <% end %>
         </div>
+      <% end %>
 
-        <!-- signup -->
-        <div class="tab-pane fade" id="signupPane" role="tabpanel">
-          <%= form_for(resource_class.new, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <div class="mb-3">
-              <%= f.label :name, "ユーザー名", class: "form-label" %>
-              <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
-            </div>
-
-            <div class="mb-3">
-              <%= f.label :email, "メールアドレス", class: "form-label" %>
-              <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
-            </div>
-
-            <div class="mb-3">
-              <%= f.label :password, "パスワード", class: "form-label" %>
-              <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-            </div>
-
-            <div class="mb-3">
-              <%= f.label :password_confirmation, "パスワード（確認）", class: "form-label" %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-            </div>
-
-            <div class="d-grid mt-4">
-              <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
-            </div>
-          <% end %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="mb-3">
+          <%= f.label :email, "メールアドレス", class: "form-label" %>
+          <%= f.email_field :email,
+                autofocus: true,
+                autocomplete: "email",
+                class: "form-control",
+                required: true %>
         </div>
+
+        <div class="mb-3">
+          <%= f.label :password, "パスワード", class: "form-label" %>
+          <%= f.password_field :password,
+                autocomplete: "current-password",
+                class: "form-control",
+                required: true %>
+        </div>
+
+        <div class="d-grid mt-4">
+          <%= f.submit "ログイン", class: "btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+
+      <div class="text-center mt-3">
+        <span class="text-muted">アカウントをお持ちでないですか？</span><br>
+        <%= link_to "新規登録はこちら", new_user_registration_path,
+    class: "auth-link-btn" %>
+
       </div>
-
     </div>
   </div>
 </div>

@@ -16,6 +16,11 @@
   <body>
     <% if user_signed_in? %> 
       <header>
+        <div>
+          <%= link_to root_path do %>
+            <%= image_tag "musiclyrics-horizontal.png", class: "header-logo", alt: "MusicLyrics" %>
+          <% end %>
+        </div>
         <div><%= link_to root_path, class: "text-white nav-link" do %>Musiulyics<% end %></div>
         <div><%= link_to "TOP", root_path, class: "text-white nav-link" %></div>
         <div><%= link_to "NEW POST", new_post_path, class: "text-white nav-link" %></div>
