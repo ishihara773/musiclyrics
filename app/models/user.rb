@@ -36,4 +36,7 @@ class User < ApplicationRecord
   def following?(user)
     followeds.include?(user)
   end
+
+  validates :name, presence: true
+
 end
