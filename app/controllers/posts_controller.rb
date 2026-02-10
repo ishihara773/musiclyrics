@@ -18,6 +18,8 @@ class PostsController < ApplicationController
     #@posts = Post.all
     @posts = Post.published.page(params[:page]).reverse_order
     @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
+
+    @posts = Post.includes(:user, image_attachment: :blob).order(created_at: :desc)
   end
 
   def show

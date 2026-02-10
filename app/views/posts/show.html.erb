@@ -1,64 +1,41 @@
-<div class="cover-show">
-  <div class="container d-flex flex-column align-items-center">
-    <div class="row mt-5 mb-5">
-      <h1 class="font-weight-normal mt-5 mb-5">投稿詳細</h1>
+<div class="container my-5 post-show">
+  <div class="mb-3">
+    <%= link_to "← 一覧に戻る", posts_path, class: "text-decoration-none" %>
+  </div>
+
+  <div class="card shadow-sm p-4">
+    <div class="d-flex align-items-center gap-3 mb-3">
+      <div class="avatar-lg">
+        <div class="avatar-fallback"><%= @post.user.name.first.upcase rescue "U" %></div>
+      </div>
+      <div>
+        <div class="fw-bold fs-5"><%= @post.user.name %></div>
+        <div class="text-muted small"><%= time_ago_in_words(@post.created_at) %>前</div>
+      </div>
     </div>
-    <% if @comment.errors.any? %>
-      <div class="card text-center text-white bg-danger mt-3">
-        <%= @comment.errors.count %>件のエラーが発生しました
-        <% @comment.errors.full_messages.each do |message| %>
-          <%= message %>
-        <% end %>
+
+    <h1 class="detail-title mb-3">「<%= @post.title %>」</h1>
+    <div class="text-center text-muted mb-3">
+      <% if @post.location.present? %>
+        <%= @post.location %>
+      <% end %>
+    </div>
+
+    <% if @post.image.attached? %>
+      <div class="detail-image mb-3">
+        <%= image_tag @post.image.variant(resize_to_limit: [1000, 600]), class: "detail-image-img" %>
       </div>
     <% end %>
-    <div class="container d-flex mt-5">
-      <div class="d-block">
-        <p class="caption"><%= @post.user&.name || "名無し" %></p>
-         <% if @post.image.attached? %>
-            <%= image_tag @post.image %><br>
-         <% end %>
-         <p class="caption"><%= @post.location %>
-           <% if @post.favorited_by?(current_user) %>
-             <%= link_to post_favorites_path(@post),  data: { turbo_method: :delete }, class: "favorite_btn" do %>
-               ♥<%= @post.favorites.count %> いいね
-             <% end %>
-           <% else %>
-             <%= link_to post_favorites_path(@post),  data: { turbo_method: :post }, class: "favorite_btn" do %>
-               ♡<%= @post.favorites.count %> いいね
-             <% end %>
-           <% end %>
-        </p>
-        <p class="caption">comments</p>
-        <p id="text"><%= @post.text %></p>
-        <% if @post.user == current_user %>
-          <%= link_to 'edit', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
-          <%= link_to 'delete', post_path(@post.id),  data: { turbo_method: :delete, turbo_confirm:  "本当に消しますか？"}, class: "btn btn-danger" %><br>
-        <% end %>
-        <%= link_to '⌂', posts_path, class: "btn btn-dark mt-3" %>
-      </div>
-      <div class="comments ml-5 mt-5">
-        <%= form_with(model:[@post, @comment], local: true) do |f| %>
-          <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
-          <%= f.submit "送信する", class: "btn btn-success mb-4" %>
-        <% end %>
 
-        <p>コメント件数：<%= @comments.count %></p>
-        <% @comments.each do |comment| %>
-          <div class="comments-index mb-2">
-            <%= comment.user.name %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-            <div class="d-flex">
-              <%= comment.comment %>
-              <% if comment.user == current_user %>
-                <div class="comment-delete">
-                  <%= link_to "削除", post_comment_path(comment.post, comment),  data: { turbo_method: :delete }, class: "btn-sm btn-danger" %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-        <%= paginate @comments %>
+    <div class="card mt-3">
+      <div class="card-body">
+        <%= simple_format(@post.text) %>
       </div>
+    </div>
+
+    <div class="d-flex justify-content-end gap-3 mt-3 text-muted">
+      <div>💬 <%= @post.comments.count %> コメント</div>
+      <div>❤️ <%= @post.favorites.count %> いいね</div>
     </div>
   </div>
 </div>
