@@ -37,5 +37,11 @@
       <div>💬 <%= @post.comments.count %> コメント</div>
       <div>❤️ <%= @post.favorites.count %> いいね</div>
     </div>
+
+    <% if @post.user == current_user %>
+      <div class="d-flex justify-content-end mt-3">
+      <%= link_to "✏️ 編集", edit_post_path(@post), class: "btn btn-outline-primary btn-sm" %>
+      </div>
+    <% end %>
   </div>
 </div>
